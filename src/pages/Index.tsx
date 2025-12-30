@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Calendar } from '@/components/ui/calendar';
@@ -114,15 +114,48 @@ const reviews = [
   }
 ];
 
+const API_URL = 'https://functions.poehali.dev/3e598073-592e-4089-86dd-885a1054d9b9';
+
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedDate, setSelectedDate] = useState<Date>();
   const [selectedBouquet, setSelectedBouquet] = useState<Bouquet | null>(null);
+  const [products, setProducts] = useState<Bouquet[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
+  const loadProducts = async () => {
+    try {
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      
+      const mappedProducts = data.map((p: any) => ({
+        id: p.id,
+        name: p.name,
+        price: p.price,
+        category: p.category,
+        image: p.image_url || '/placeholder.svg',
+        description: p.description
+      }));
+      
+      setProducts(mappedProducts);
+    } catch (error) {
+      console.error('Failed to load products:', error);
+      setProducts(bouquets);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const displayProducts = products.length > 0 ? products : bouquets;
 
   const filteredBouquets =
     selectedCategory === 'all'
-      ? bouquets
-      : bouquets.filter((b) => b.category === selectedCategory);
+      ? displayProducts
+      : displayProducts.filter((b) => b.category === selectedCategory);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary/20">

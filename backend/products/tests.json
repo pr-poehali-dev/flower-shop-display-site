@@ -1,0 +1,20 @@
+{
+  "tests": [
+    {
+      "name": "Get all available products",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": [],
+      "bodyMatcher": "type"
+    },
+    {
+      "name": "Get all products including unavailable (admin)",
+      "method": "GET",
+      "path": "/?all=true",
+      "expectedStatus": 200,
+      "expectedBody": [],
+      "bodyMatcher": "type"
+    }
+  ]
+}
