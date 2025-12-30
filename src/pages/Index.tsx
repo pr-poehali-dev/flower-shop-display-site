@@ -21,51 +21,75 @@ interface Bouquet {
 const bouquets: Bouquet[] = [
   {
     id: 1,
-    name: 'Нежность',
-    price: 3500,
-    category: 'romantic',
+    name: 'Розы Premium',
+    price: 4500,
+    category: 'mono',
     image: 'https://cdn.poehali.dev/projects/2d5ddf42-666a-4214-bff1-ce74864330bc/files/b0a3d8c8-39ce-4b87-9510-95658c8fbd91.jpg',
-    description: 'Романтичный букет из роз и эустом в пастельных тонах'
+    description: 'Монобукет из 25 нежных розовых роз'
   },
   {
     id: 2,
     name: 'Солнечный день',
     price: 4200,
-    category: 'bright',
+    category: 'mixed',
     image: 'https://cdn.poehali.dev/projects/2d5ddf42-666a-4214-bff1-ce74864330bc/files/7964070f-5ddc-47b9-bc73-f4d314ec09c8.jpg',
-    description: 'Яркий букет из желтых и оранжевых цветов'
+    description: 'Сборный букет из желтых и оранжевых цветов'
   },
   {
     id: 3,
     name: 'Весенний сад',
     price: 2800,
-    category: 'seasonal',
+    category: 'mixed',
     image: 'https://cdn.poehali.dev/projects/2d5ddf42-666a-4214-bff1-ce74864330bc/files/5c02e7be-166e-4783-94ae-94a1aa1e8c19.jpg',
     description: 'Свежий весенний букет с тюльпанами и нарциссами'
   },
   {
     id: 4,
-    name: 'Классика',
+    name: 'Цветочная коробка',
     price: 5500,
-    category: 'romantic',
+    category: 'composition',
     image: 'https://cdn.poehali.dev/projects/2d5ddf42-666a-4214-bff1-ce74864330bc/files/b0a3d8c8-39ce-4b87-9510-95658c8fbd91.jpg',
-    description: 'Элегантный букет из красных роз'
+    description: 'Элегантная композиция из роз в шляпной коробке'
   },
   {
     id: 5,
-    name: 'Полевые травы',
+    name: 'Мишка с цветами',
     price: 3200,
-    category: 'natural',
-    image: 'https://cdn.poehali.dev/projects/2d5ddf42-666a-4214-bff1-ce74864330bc/files/5c02e7be-166e-4783-94ae-94a1aa1e8c19.jpg',
-    description: 'Натуральный букет из полевых цветов и трав'
+    category: 'toys',
+    image: '/placeholder.svg',
+    description: 'Плюшевый мишка с букетом из 15 роз'
   },
   {
     id: 6,
-    name: 'Пионовая мечта',
+    name: 'Букет с Raffaello',
+    price: 4800,
+    category: 'sweets',
+    image: '/placeholder.svg',
+    description: 'Нежный букет с конфетами Raffaello'
+  },
+  {
+    id: 7,
+    name: 'Цветы и шары',
+    price: 3900,
+    category: 'balloons',
+    image: '/placeholder.svg',
+    description: 'Букет с гелиевыми шарами в подарок'
+  },
+  {
+    id: 8,
+    name: 'Пионы белые',
     price: 6800,
-    category: 'seasonal',
+    category: 'mono',
     image: 'https://cdn.poehali.dev/projects/2d5ddf42-666a-4214-bff1-ce74864330bc/files/b0a3d8c8-39ce-4b87-9510-95658c8fbd91.jpg',
-    description: 'Роскошный букет из ароматных пионов'
+    description: 'Монобукет из ароматных белых пионов'
+  },
+  {
+    id: 9,
+    name: 'Корзина с цветами',
+    price: 7500,
+    category: 'composition',
+    image: 'https://cdn.poehali.dev/projects/2d5ddf42-666a-4214-bff1-ce74864330bc/files/5c02e7be-166e-4783-94ae-94a1aa1e8c19.jpg',
+    description: 'Роскошная композиция в плетеной корзине'
   }
 ];
 
@@ -147,21 +171,27 @@ const Index = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Каталог букетов</h2>
 
           <Tabs defaultValue="all" className="mb-12" onValueChange={setSelectedCategory}>
-            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-5 h-auto">
+            <TabsList className="grid w-full max-w-4xl mx-auto grid-cols-7 h-auto">
               <TabsTrigger value="all" className="py-3">
                 Все
               </TabsTrigger>
-              <TabsTrigger value="romantic" className="py-3">
-                Романтика
+              <TabsTrigger value="mono" className="py-3">
+                Монобукеты
               </TabsTrigger>
-              <TabsTrigger value="bright" className="py-3">
-                Яркие
+              <TabsTrigger value="mixed" className="py-3">
+                Сборные
               </TabsTrigger>
-              <TabsTrigger value="seasonal" className="py-3">
-                Сезонные
+              <TabsTrigger value="composition" className="py-3">
+                Композиции
               </TabsTrigger>
-              <TabsTrigger value="natural" className="py-3">
-                Полевые
+              <TabsTrigger value="toys" className="py-3">
+                Игрушки
+              </TabsTrigger>
+              <TabsTrigger value="sweets" className="py-3">
+                Конфеты
+              </TabsTrigger>
+              <TabsTrigger value="balloons" className="py-3">
+                Шары
               </TabsTrigger>
             </TabsList>
           </Tabs>
